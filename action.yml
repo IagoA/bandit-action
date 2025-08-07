@@ -66,11 +66,6 @@ inputs:
       Source file(s) or directory(s) to be tested
     required: true
     default: '.'
-  # pyversion:
-  #   description: |
-  #     Python version to be used
-  #   required: true
-  #   default: '3.9'
 
 runs:
   using: composite
