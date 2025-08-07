@@ -66,15 +66,15 @@ inputs:
       Source file(s) or directory(s) to be tested
     required: true
     default: '.'
+  # pyversion:
+  #   description: |
+  #     Python version to be used
+  #   required: true
+  #   default: '3.9'
 
 runs:
   using: composite
   steps:
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v5
-      with:
-        python-version: 3.9
-
     - name: Install Bandit
       shell: bash
       run: pip install bandit[sarif,toml]
