@@ -125,7 +125,7 @@ runs:
         else
             INI="--ini $INPUT_INI"
         fi
-        bandit $CONFIGFILE $PROFILE $TESTS $SKIPS $SEVERITY $CONFIDENCE -x $INPUT_EXCLUDE $BASELINE $INI -r $INPUT_TARGETS -f sarif -o results.sarif || true
+        bandit $CONFIGFILE $PROFILE $TESTS $SKIPS $SEVERITY $CONFIDENCE -x $INPUT_EXCLUDE $BASELINE $INI -r $INPUT_TARGETS -f txt -o security_report.txt
       env:
         INPUT_CONFIGFILE: ${{ inputs.configfile }}
         INPUT_PROFILE: ${{ inputs.profile }}
@@ -138,7 +138,3 @@ runs:
         INPUT_INI: ${{ inputs.ini }}
         INPUT_TARGETS: ${{ inputs.targets }}
 
-    - name: Upload SARIF file
-      uses: github/codeql-action/upload-sarif@v3
-      with:
-        sarif_file: results.sarif
