@@ -126,6 +126,9 @@ runs:
             INI="--ini $INPUT_INI"
         fi
         bandit $CONFIGFILE $PROFILE $TESTS $SKIPS $SEVERITY $CONFIDENCE -x $INPUT_EXCLUDE $BASELINE $INI -r $INPUT_TARGETS -f txt -o security_report.txt
+        exit_code=$?
+        cat security_report.txt
+        exit $exit_code
       env:
         INPUT_CONFIGFILE: ${{ inputs.configfile }}
         INPUT_PROFILE: ${{ inputs.profile }}
